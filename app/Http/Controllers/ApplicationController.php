@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreApplicationRequest;
+use App\Http\Requests\UpdateApplicationRequest;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -31,10 +33,17 @@ class ApplicationController extends Controller
             $responseRate = round(($answeredApps / $totalApps) * 100);
         }
 
+        // NEW: Fetch the 5 most recent applications to fix the error
+        $recentApplications = Application::where('user_id', $userId)
+            ->latest() // Orders by created_at DESC
+            ->take(3)  // Limits the result to 5 items
+            ->get();
+
         return view('dashboard', [
             'activeApplications' => $activeApplications,
             'upcomingInterviews' => $upcomingInterviews,
             'responseRate' => $responseRate,
+            'recentApplications' => $recentApplications, // Pass the variable to the view
         ]);
     }
 
@@ -115,19 +124,10 @@ class ApplicationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreApplicationRequest $request)
     {
         //
-        $data = $request->validate([
-            'company' => 'required|string|max:255',
-            'position' => 'required|string|max:255',
-            'status' => 'required|string|max:50',
-            'priority' => 'required|string|max:50',
-            'url' => 'nullable|url|max:255',
-            'notes' => 'nullable|string',
-            'applied_at' => 'nullable|date',
-            'file' => 'nullable|file|mimes:pdf,doc,docx,png,jpg|max:2048',
-        ]);
+        $data = $request->validated();
         $data['user_id'] = auth()->id();
 
         if ($request->hasFile('file')) {
@@ -173,25 +173,27 @@ class ApplicationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Application $application)
+    public function update(UpdateApplicationRequest $request, Application $application)
     {
         //
         $this->authorize('update', $application);
 
-        $date = $request->validated();
+        $validatedData = $request->validated();
+
 
         if ($request->hasFile('file')) {
             if ($application->file_path) {
                 Storage::disk('local')->delete($application->file_path);
             }
-            $data['file_path'] = $request->file('file')->stire('attachment', 'local');
-
-            $application->update($data);
-
-            return redirect()
-                ->route('applications.show', $application)
-                ->with('success', 'Candidature mise à jour.');
+            $validatedData['file_path'] = $request->file('file')->stire('attachment', 'local');
         }
+
+    
+        $application->update($validatedData);
+    
+        return redirect()
+            ->route('applications.show', $application->id)
+            ->with('success', 'Candidature mise à jour.');
     }
 
     /**
@@ -201,6 +203,14 @@ class ApplicationController extends Controller
     {
         //
         $this->authorize('delete', $application);
+
+        if($application->trashed()){
+            $application->forceDelete();
+
+            return redirect()
+                ->route('applications.archive')
+                ->with('success', 'Candidature définitivement supprimée.');
+        }
 
         $application->delete();
 
@@ -222,6 +232,7 @@ class ApplicationController extends Controller
         }
 
         $applications = $query->get();
+
 
         return view('applications.archive', [
             'applications' => $applications,

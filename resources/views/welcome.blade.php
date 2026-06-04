@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CandidatureTracker - Elevate Your Career Launch</title>
+    <title>CandidatureTracker - Project Support</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -30,107 +30,98 @@
                 <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">Candidature<span class="text-blue-500">Tracker</span></span>
             </div>
 
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
-                <a href="#features" class="hover:text-white transition">Features</a>
-                <a href="#metrics" class="hover:text-white transition">System Specs</a>
-                <a href="#" class="hover:text-white transition">Premium Core</a>
-            </nav>
-
             <div class="flex items-center gap-4">
-                @if (Route::has('login'))
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs px-5 py-2.5 rounded-xl border border-slate-700/50 transition">
-                            Go to Dashboard
-                        </a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-slate-300 hover:text-white font-semibold text-xs transition">
-                            Sign in
-                        </a>
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="bg-gradient-to-r from-blue-500 via-indigo-600 to-teal-500 hover:opacity-95 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-[0_4px_20px_rgba(37,99,235,0.2)] transition">
-                                Register Now
-                            </a>
-                        @endif
-                    @endauth
-                @endif
+                @auth
+                    <a href="{{ url('/dashboard') }}" class="bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs px-5 py-2.5 rounded-xl border border-slate-700/50 transition">
+                        Back to Dashboard
+                    </a>
+                @else
+                    <a href="{{ route('login') }}" class="text-slate-300 hover:text-white font-semibold text-xs transition">Sign in</a>
+                    <a href="{{ route('register') }}" class="bg-gradient-to-r from-blue-500 via-indigo-600 to-teal-500 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-[0_4px_20px_rgba(37,99,235,0.2)] transition">
+                        Register
+                    </a>
+                @endauth
             </div>
         </div>
     </header>
 
-    <main class="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-24 text-center space-y-12">
-        <div class="inline-flex items-center gap-2 bg-[#161D2E] border border-slate-800 px-3.5 py-1.5 rounded-full shadow-inner shadow-black/20">
-            <span class="flex h-2 w-2 relative">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            <span class="text-[11px] font-bold tracking-wider text-slate-300 uppercase">Built Specifically for Recent Graduates</span>
-        </div>
-
-        <div class="max-w-3xl mx-auto space-y-6">
-            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.1] text-white">
-                Propel your <br class="hidden sm:inline">
-                <span class="bg-gradient-to-r from-blue-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">career launch.</span>
+    <main class="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-24 space-y-16">
+        
+        <div class="text-center space-y-6 max-w-3xl mx-auto">
+            <div class="inline-flex items-center gap-2 bg-[#161D2E] border border-slate-800 px-3.5 py-1.5 rounded-full mb-4">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                </span>
+                <span class="text-[11px] font-bold tracking-wider text-blue-400 uppercase">Support Center</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                How can we help with <br>
+                <span class="bg-gradient-to-r from-blue-400 via-indigo-400 to-teal-400 bg-clip-text text-transparent">your career project?</span>
             </h1>
-            <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto font-medium leading-relaxed">
-                The premium tracking ecosystem engineered safely to manage your applications, interviews, and offers with zero mental clutter.
+            <p class="text-slate-400 text-lg font-medium">
+                Get technical assistance, report issues, or suggest new features for your tracking ecosystem.
             </p>
         </div>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <a href="{{ route('register') }}" class="w-full sm:w-auto bg-gradient-to-r from-blue-500 via-indigo-600 to-teal-500 text-white font-bold text-sm px-8 py-3.5 rounded-xl shadow-[0_4px_25px_rgba(37,99,235,0.3)] transition flex items-center justify-center gap-2">
-                <span>Start Free Account</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-            </a>
-            <a href="#features" class="w-full sm:w-auto bg-[#111622] border border-slate-800 hover:bg-[#161D2E] text-slate-300 font-semibold text-sm px-8 py-3.5 rounded-xl transition">
-                Explore Features
-            </a>
-        </div>
-
-        <section id="features" class="pt-24 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-            <div class="bg-[#111622] border border-slate-800/80 p-8 rounded-2xl shadow-2xl shadow-black/30 relative overflow-hidden group hover:border-slate-700 transition">
-                <div class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700/40 flex items-center justify-center text-blue-400 mb-6">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Technical Support -->
+            <div class="bg-[#111622] border border-slate-800/80 p-10 rounded-3xl shadow-2xl relative group hover:border-blue-500/50 transition-all duration-500">
+                <div class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-8">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                 </div>
-                <h3 class="text-lg font-bold text-white tracking-wide">Smart Tracking</h3>
-                <p class="text-xs text-slate-400 mt-2 leading-relaxed">Visualize the state of each corporate pipeline status dynamically at a single glance without overhead spreadsheet management.</p>
+                <h3 class="text-2xl font-bold text-white mb-4">Technical Help</h3>
+                <p class="text-slate-400 leading-relaxed mb-8">Facing issues with your dashboard or recruitment pipelines? Our support team is ready to help you debug any system constraints.</p>
+                <a href="mailto:support@candidaturetracker.com" class="inline-flex items-center gap-2 text-blue-400 font-bold hover:text-blue-300 transition group">
+                    Contact Support 
+                    <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
             </div>
 
-            <div class="bg-[#111622] border border-slate-800/80 p-8 rounded-2xl shadow-2xl shadow-black/30 relative overflow-hidden group hover:border-slate-700 transition">
-                <div class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700/40 flex items-center justify-center text-emerald-400 mb-6">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <!-- Documentation & FAQ -->
+            <div class="bg-[#111622] border border-slate-800/80 p-10 rounded-3xl shadow-2xl relative group hover:border-emerald-500/50 transition-all duration-500">
+                <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-8">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                     </svg>
                 </div>
-                <h3 class="text-lg font-bold text-white tracking-wide">Real-time Sprints</h3>
-                <p class="text-xs text-slate-400 mt-2 leading-relaxed">Stay adaptive and monitor upcoming recruitment milestones, direct screenings, and coding interviews seamlessly.</p>
-            </div>
-
-            <div class="bg-[#111622] border border-slate-800/80 p-8 rounded-2xl shadow-2xl shadow-black/30 relative overflow-hidden group hover:border-slate-700 transition">
-                <div class="w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700/40 flex items-center justify-center text-teal-400 mb-6">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                <h3 class="text-2xl font-bold text-white mb-4">Protocol Guide</h3>
+                <p class="text-slate-400 leading-relaxed mb-8">Learn how to maximize your interview preparation and manage your applications using our built-in organizational logic.</p>
+                <a href="#" class="inline-flex items-center gap-2 text-emerald-400 font-bold hover:text-emerald-300 transition group">
+                    View Documentation 
+                    <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
-                </div>
-                <h3 class="text-lg font-bold text-white tracking-wide">Premium Workspace</h3>
-                <p class="text-xs text-slate-400 mt-2 leading-relaxed">Enjoy an intuitive graduate dashboard workspace that safely manages update logging and scales off cognitive load.</p>
+                </a>
             </div>
         </section>
+
+        <div class="bg-gradient-to-b from-[#161D2E] to-[#111622] border border-slate-800 rounded-3xl p-12 text-center max-w-4xl mx-auto shadow-inner">
+            <h4 class="text-xl font-bold text-white mb-4">Need urgent assistance?</h4>
+            <p class="text-slate-400 text-sm mb-8">Our protocol response time is typically within 24 hours for all graduate support tickets.</p>
+            <div class="flex flex-wrap justify-center gap-6 text-xs font-bold uppercase tracking-widest text-slate-500">
+                <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span> Ticket System</span>
+                <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span> Live Status</span>
+                <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-teal-500 rounded-full"></span> Direct Chat</span>
+            </div>
+        </div>
     </main>
 
-    <footer class="w-full border-t border-slate-800/50 bg-[#090D14] py-8 px-6 mt-12">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between text-[11px] font-medium text-slate-500 gap-4">
-            <span>&copy; {{ date('Y') }} CandidatureTracker. Designed with distinction for future leadership pipelines.</span>
-            <div class="flex items-center gap-4 text-slate-400">
-                <a href="#" class="hover:underline">Support System</a>
-                <span>•</span>
-                <a href="#" class="hover:underline">Privacy Guidelines</a>
-                <span>•</span>
-                <a href="#" class="hover:underline">Terms of Protocol</a>
+    <footer class="w-full border-t border-slate-800/50 bg-[#090D14] py-12 px-6 mt-12">
+        <div class="max-w-7xl mx-auto flex flex-col items-center gap-6">
+            <div class="flex items-center gap-8 text-sm font-medium text-slate-500">
+                <a href="#" class="hover:text-white transition">Privacy Protocol</a>
+                <a href="#" class="hover:text-white transition">Terms of Service</a>
+                <a href="#" class="hover:text-white transition">Security Guidelines</a>
             </div>
+            <p class="text-[11px] font-medium text-slate-600 text-center">
+                &copy; {{ date('Y') }} CandidatureTracker. Optimized for the next generation of industry leaders.
+            </p>
         </div>
     </footer>
 
