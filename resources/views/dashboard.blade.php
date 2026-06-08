@@ -105,7 +105,7 @@
                         <div class="flex items-center justify-between px-2">
                             <div>
                                 <h3 class="text-lg font-bold text-slate-900">Application Pipeline</h3>
-                                <p class="text-xs text-slate-500 font-medium">Your 5 most recent movements</p>
+                                <p class="text-xs text-slate-500 font-medium">Your 3 most recent movements</p>
                             </div>
                             <a href="{{ route('applications.index') }}"
                                 class="text-xs font-bold text-purple-600 bg-purple-50 px-4 py-2 rounded-xl hover:bg-purple-100 transition">

@@ -1,45 +1,7 @@
 <x-app-layout>
     <div class="flex min-h-screen w-full bg-[#F8F9FC]">
-        
-        <aside class="w-20 bg-white border-r border-slate-200/80 flex flex-col items-center justify-between py-6 shrink-0 z-20">
-            <div class="flex flex-col items-center gap-8 w-full">
-                <div class="w-10 h-10 bg-[#7C3AED] rounded-xl flex items-center justify-center text-white shadow-lg shadow-purple-500/20">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                    </svg>
-                </div>
-                <nav class="flex flex-col items-center gap-4 w-full px-2">
-                    <a href="{{ route('dashboard') }}" class="w-12 h-12 text-[#7C3AED] bg-purple-50 rounded-xl flex items-center justify-center transition-all duration-200">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                        </svg>
-                    </a>
-                </nav>
-            </div>
-            <div class="flex flex-col items-center gap-5 w-full px-2">
-                <div class="w-10 h-10 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs font-bold uppercase shadow-sm">
-                    {{ substr(Auth::user()->name, 0, 2) }}
-                </div>
-            </div>
-        </aside>
 
         <div class="flex-1 flex flex-col min-w-0">
-            <header class="h-16 bg-white border-b border-slate-200/80 px-8 flex items-center justify-between z-10">
-                <div class="w-96 relative flex items-center">
-                    <span class="absolute left-3.5 text-slate-400">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                    </span>
-                    <input type="text" placeholder="Rechercher..." class="w-full bg-slate-50 text-sm placeholder-slate-400 pl-10 pr-4 py-2 border-0 rounded-xl focus:bg-white focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition duration-150">
-                </div>
-                <div class="flex items-center gap-4">
-                    <form method="POST" action="{{ route('logout') }}" class="inline m-0 p-0">
-                        @csrf
-                        <button type="submit" class="bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-semibold text-sm px-4 py-2 rounded-xl shadow-md transition duration-150">
-                            <span>Déconnexion</span>
-                        </button>
-                    </form>
-                </div>
-            </header>
 
             <main class="flex-1 p-8 max-w-[1000px] w-full mx-auto space-y-6">
                 <div class="flex items-center gap-2 text-xs font-bold tracking-wide text-slate-400 uppercase">

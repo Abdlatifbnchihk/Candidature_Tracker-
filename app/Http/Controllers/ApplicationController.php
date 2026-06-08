@@ -9,6 +9,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 class ApplicationController extends Controller
 {
+
+    public function getUserStatus(){
+        $user_id = auth()->id();
+
+        $status = Application::where('user_id', $user_id)
+            ->with('status', 'rejected')
+            ->count();
+
+
+        return view('application.index', ['status']);
+    }
     /**
      * Display the dashboard.
      */
@@ -188,9 +199,9 @@ class ApplicationController extends Controller
             $validatedData['file_path'] = $request->file('file')->stire('attachment', 'local');
         }
 
-    
+
         $application->update($validatedData);
-    
+
         return redirect()
             ->route('applications.show', $application->id)
             ->with('success', 'Candidature mise à jour.');
@@ -204,7 +215,7 @@ class ApplicationController extends Controller
         //
         $this->authorize('delete', $application);
 
-        if($application->trashed()){
+        if ($application->trashed()) {
             $application->forceDelete();
 
             return redirect()
