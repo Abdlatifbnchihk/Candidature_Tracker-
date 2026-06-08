@@ -10,16 +10,16 @@ use Illuminate\Support\Facades\Storage;
 class ApplicationController extends Controller
 {
 
-    public function getUserStatus(){
-        $user_id = auth()->id();
+    // public function getUserStatus(){
+    //     $user_id = auth()->id();
 
-        $status = Application::where('user_id', $user_id)
-            ->with('status', 'rejected')
-            ->count();
+    //     $status = Application::where('user_id', $user_id)
+    //         ->with('status', 'rejected')
+    //         ->count();
 
 
-        return view('application.index', ['status']);
-    }
+    //     return view('application.index', ['status']);
+    // }
     /**
      * Display the dashboard.
      */
